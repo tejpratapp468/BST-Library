@@ -12,5 +12,6 @@ int main(int argc, char** argv) {
 	root->remove(35);
 	std::cout<<root->inorder();	
 	std::cout<<root->preorder();
+	std::cout<<root->postorder();
 	return 0;
 }
