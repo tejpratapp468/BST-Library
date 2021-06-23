@@ -63,7 +63,7 @@ void bst::remove(int key)
 
 bool bst::exists(int key)
 {
-	return existsUtil(root,key);
+	return existsUtil(this->root,key);
 }
 
 
@@ -77,7 +77,7 @@ string bst::preorder() const
 string bst::inorder() const
 {
 	string ret = "";
-	traversal(root,ret,2);
+	traversal(this->root,ret,2);
 	return ret;
 }
 
@@ -90,7 +90,7 @@ string bst::postorder() const
 
 bst& bst::operator+(int data)
 {
-	bst *temp = new bst(*this);
+	bst *temp = new bst(*this);//*pointer=value of pointer
 	temp->insert(data);
 	return *temp;
 }
@@ -100,7 +100,7 @@ bst& bst::operator=(const bst &tree)
 	copyUtil(root,tree.root);
 	return *this;
 }
-
+//<---------------------------------------------- Utiities--------------------------------------------------------------->
 node* insertUtil(node *root,const int data)
 {
 	if(root==nullptr)
@@ -148,7 +148,7 @@ node* removeUtil(node* root,const int key)
 				temp=temp->left;
 			}
 			root->data = temp->data;
-			root->right = removeUtil(root->right,root->data);
+			root->right = removeUtil(root->right,temp->data);
 		}
 		else{
 			node *temp=root->left?root->left:root->right;
