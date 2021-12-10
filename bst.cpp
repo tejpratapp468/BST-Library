@@ -10,6 +10,7 @@ bool existsUtil(node*,const int);
 void copyUtil(node*&,node*);
 void destroyUtil(node*);
 
+//<-------------------constructors------------------------------->
 bst::bst()
 {
 	root = nullptr;
@@ -34,11 +35,13 @@ bst::bst(const vector<int>& v)
 	}
 }
 
+//<-------------------------------------Destructor--------------------------------------------->
 bst::~bst()
 {
 	destroyUtil(root);
 }
 
+//<-----------------------------------Methods in BST ---------------------------------------->
 void bst::insert(int data)
 {
 	if(root==nullptr)
@@ -101,6 +104,8 @@ bst& bst::operator=(const bst &tree)
 	return *this;
 }
 //<---------------------------------------------- Utiities--------------------------------------------------------------->
+
+//<---------------------------------------------- insert a node with given data--------------------------------------------------------------->
 node* insertUtil(node *root,const int data)
 {
 	if(root==nullptr)
@@ -121,6 +126,7 @@ node* insertUtil(node *root,const int data)
 	return root;
 }
 
+//<----------------------------------------Check if a node with given key value exist or not---------------------------------------------------->
 bool existsUtil(node* root,const int key)
 {
 	if(root==nullptr)
@@ -129,6 +135,8 @@ bool existsUtil(node* root,const int key)
 	}
 	return root->data==key || existsUtil(root->left,key) || existsUtil(root->right,key);
 }
+
+//<----------------------------------------remove a node with given key value---------------------------------------------------->
 
 node* removeUtil(node* root,const int key)
 {
@@ -167,7 +175,7 @@ node* removeUtil(node* root,const int key)
 	return root;
 }
 
-
+//<---------------------------------------------- Traversals--------------------------------------------------------------->
 void traversal(node *root,string &ret,const int type)
 {
 	if(root==nullptr) return;
@@ -191,6 +199,7 @@ void traversal(node *root,string &ret,const int type)
 	}
 }
 
+//<------------------------------------ Initialising a bst  with another tree----------------------------------->
 void copyUtil(node*&root,node* tree)
 {
 	if(tree==nullptr)
@@ -207,6 +216,7 @@ void copyUtil(node*&root,node* tree)
 	}
 }
 
+//<------------------------------------ Destroying/deleting ou tree----------------------------------->
 void destroyUtil(node *root)
 {
 	if(root==nullptr) return;
